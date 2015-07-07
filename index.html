@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="utf-8">
+
+<title>WYS Markdown</title>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css"></link>
+<link rel="stylesheet" type="text/css" href="lib/css/prettify.css"></link>
+<link rel="stylesheet" type="text/css" href="src/bootstrap-wysihtml5.css"></link>
+
+<style type="text/css" media="screen">
+	.btn.jumbo {
+		font-size: 20px;
+		font-weight: normal;
+		padding: 14px 24px;
+		margin-right: 10px;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+	}
+</style>
+
+</head>
+<body>
+<div class="container">
+	<div class="hero-unit">
+		<h2>WYSMarkdown <small>Type to generate Markdown</small></h2>
+		<hr/>
+		<div class="row">
+			<textarea id="input" class="textarea" placeholder="Enter text ..." onkeyup="updateOutput()" onkeypress="updateOutput()"></textarea>
+		</div>
+		
+		<div class="col-md-12">
+                <input id="thisButton" type="button" name="Display" value="Generate Markdown" onclick="updateOutput()"/>
+            </div>
+        
+		
+		<div class="row">
+			<textarea id="output" class="markdown" placeholder="Markdown here"  ></textarea>
+		</div>
+
+	</div>
+	<div class="row">
+	<h3>Authors Notes:</h3>
+		<p>This editor and Markdown converter started as a side projec to help create quick markdown documents.</p>
+		<p>While <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> can do a lot more than the few features shown in the editor, I hope that this helps for Markdown starters to get going.</p>
+		<p>Please feel free to form and expand this editor on my <a href="">Github</a> account.</p>
+	
+	<h3>Acknowledgements</h3>
+		<p>This editor would not have been possible without the great work of other developers that lend some good open source code:</p>
+		<ul>
+			<li><a href="https://github.com/jhollingworth/bootstrap-wysihtml5/">Bootstrap WYSIHTML5</a> - thank you for a great HTML editor.</li>
+			<li><a href="http://daringfireball.net/projects/markdown/">Daring Fireball</a> by John Gruber is an excelent website with a deep understanding of Markdown </li>
+		</ul>
+		
+		
+	</div>
+	
+	
+	<div class="row">
+		<div id="log" style="display:none";>
+		
+		</div>
+	</div>
+</div>
+
+
+<script src="lib/js/wysihtml5-0.3.0.js"></script>
+<script src="lib/js/jquery-1.7.2.min.js"></script>
+<script src="lib/js/prettify.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="src/bootstrap-wysihtml5.js"></script>
+<script src="lib/js/html2markdown.js"></script>
+
+<script>
+	//$('.textarea').wysihtml5();
+	$('.textarea').wysihtml5({
+	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+	"emphasis": true, //Italics, bold, etc. Default true
+	"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+	"html": false, //Button which allows you to edit the generated HTML. Default false
+	"link": true, //Button to insert a link. Default true
+	"image": false, //Button to insert an image. Default true,
+	"color": false //Button to change color of font  
+});
+	
+</script>
+
+<script type="text/javascript">
+	$(prettyPrint);
+	//$(function(){
+    //	var $input = $('textarea');
+    //});
+    function updateOutput() {
+      // var data = $(textarea#inputfield);
+      var content8 = $('textarea').val();
+      $('#output').text(toMarkdown(content8));
+    }
+
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45601893-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
